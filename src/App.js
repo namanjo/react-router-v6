@@ -1,21 +1,24 @@
 import Nav from './Nav'
 import About from './About'
 import Shop from './Shop'
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+
 
 
 function App() {
   return (
+    <BrowserRouter>
       <div className="App">
         <Nav />
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/about" component={About}/>
-          <Route path="/shop" exact component={Shop}/>
-          <Route path="/shop/:id" component={ItemDetail} />
-        </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/shop"  element={<Shop />} />
+            <Route path="/shop/:id" element={<ItemDetail />} />
+          </Routes>
       </div>
+    </BrowserRouter>
   );
 }
 

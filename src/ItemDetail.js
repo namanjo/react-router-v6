@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 
-const ItemDetail = ({match}) => {
+const ItemDetail = () => {
 
-useEffect(() => {
+  const params = useParams()
+
+  const [gameItem, setGameItem] = useState({
+    item: {
+        images: {}
+    }
+  })
+
+
+  useEffect(() => {
 
     const fetchItem = async () => {
-        const fetchItem = await fetch(`https://fortnite-api.theapinetwork.com/item/get?id=${match.params.id}`)
+        const fetchItem = await fetch(`https://fortnite-api.theapinetwork.com/item/get?id=${params.id}`)
     
         const item = await fetchItem.json();
         setGameItem(item.data)
         console.log(item.data)
       }
     
-    fetchItem()
-    console.log(match)
-}, [])
-
-
-const [gameItem, setGameItem] = useState({
-    item: {
-        images: {}
-    }
-})
+      fetchItem()
+  }, [])
 
 
   return (

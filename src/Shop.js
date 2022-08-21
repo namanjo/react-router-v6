@@ -23,7 +23,7 @@ const Shop = () => {
       <h1>Shop</h1>
       {gameItems.map((obj) => (
         <h3 key={obj.itemId}>
-          <Link to={`/shop/${obj.itemId}`} >{obj.item.name}</Link>
+          <Link to={`${obj.itemId}`} >{obj.item.name}</Link>
         </h3>
       ))}
     </>
